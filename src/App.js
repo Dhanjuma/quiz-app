@@ -122,7 +122,7 @@ function App() {
         `https://opentdb.com/api.php?amount=10&category=${formData.category}&difficulty=${formData.levelOfDifficulty}&type=multiple`
       );
       const all = await response.json();
-      console.log(all);
+      // console.log(all);
       setQuestions(
         all.results.map((item, index) => ({
           question: item.question,
@@ -132,7 +132,6 @@ function App() {
               value: op,
               id: index,
               selected: false,
-              // correct: "",
             }))
             .map((value) => ({ value, sort: Math.random() }))
             .sort((a, b) => a.sort - b.sort)
@@ -147,7 +146,7 @@ function App() {
     };
     fetchData();
   }, [quiz, formData, category]);
-  console.log(questions);
+  // console.log(questions);
 
   const quizzes = questions.map((question, index) => (
     <Quiz

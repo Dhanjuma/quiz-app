@@ -33,6 +33,7 @@ body{
 }
 main.dark .toggler--slider {
   background-color: black;
+  justify-content: flex-end;
 }
 .toggler--slider--circle {
   height: 13px;
@@ -45,15 +46,15 @@ main.dark .toggler--slider {
 main.dark .toggler--slider--circle {
   background-color: white;
 }
-nav.dark .toggler--light {
+/* nav.dark .toggler--light {
   color: #918E9B;
 }
 main.dark .toggler-dark {
   color: #FFFFFF;
-}
-main.dark .toggler--slider {
+} */
+/* main.dark .toggler--slider {
   justify-content: flex-end;
-}
+} */
 
 
 
