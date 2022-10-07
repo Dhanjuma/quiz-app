@@ -195,7 +195,7 @@ function App() {
             />
             {showPoints && (
               <h1 className="score">
-                {points == questions.length && "Congratulations, "}You scored{" "}
+                {points === questions.length && "Congratulations, "}You scored{" "}
                 {points}/{questions.length}
               </h1>
             )}
