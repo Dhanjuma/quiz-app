@@ -16,6 +16,7 @@ function App() {
   const [questions, setQuestions] = React.useState([]);
   const [points, setPoints] = React.useState(0);
   const [showPoints, setShowPoints] = React.useState(false);
+  const [isFetching, setIsFetching] = React.useState(true);
   // !setting darkmode
   const [mode, setMode] = React.useState(true);
   const toggleMode = () => {
@@ -25,6 +26,7 @@ function App() {
   const [formData, setFormData] = React.useState({
     category: "",
     levelOfDifficulty: "",
+    noOfQuestions: 15,
   });
 
   function handleChange(name, value) {
@@ -109,20 +111,23 @@ function App() {
 
   const changeCategory = () => {
     SetCategory(false);
+    setIsFetching(true);
   };
 
   const reset = () => {
     SetQuiz((q) => !q);
     setShowPoints(false);
+    setIsFetching(true);
   };
 
   React.useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
-        `https://opentdb.com/api.php?amount=10&category=${formData.category}&difficulty=${formData.levelOfDifficulty}&type=multiple`
+        `https://opentdb.com/api.php?amount=${formData.noOfQuestions}&category=${formData.category}&difficulty=${formData.levelOfDifficulty}&type=multiple`
       );
       const all = await response.json();
       // console.log(all);
+      setIsFetching(false);
       setQuestions(
         all.results.map((item, index) => ({
           question: item.question,
@@ -144,7 +149,10 @@ function App() {
         }))
       );
     };
-    fetchData();
+    category && fetchData();
+    // return () => {
+    //   console.log("clearing");
+    // };
   }, [quiz, formData, category]);
   // console.log(questions);
 
@@ -158,7 +166,7 @@ function App() {
   ));
 
   return (
-    <main className={mode && "dark"}>
+    <main className={mode ? "dark" : ""}>
       <div className="toggler">
         <div className="toggler--slider" onClick={toggleMode}>
           <div className="toggler--slider--circle"></div>
@@ -173,34 +181,41 @@ function App() {
       {intro ? (
         <Intro start={startQuiz} />
       ) : category ? (
-        <div className="app">
-          {quizzes}
-          <Confetti
-            className="confetti"
-            active={points === 10 && showPoints}
-            config={config}
-          />
-          {showPoints && (
-            <h1 className="score">
-              {points === 10 && "Congratulations, "}You scored {points}/10
-            </h1>
-          )}
-          {showPoints === true ? (
-            <div className="app--btn-container">
-              <button className="app--btn" onClick={reset}>
-                Play Again
+        isFetching ? (
+          <div className="intro">
+            <h1>Loading Questions...</h1>
+          </div>
+        ) : (
+          <div className="app">
+            {quizzes}
+            <Confetti
+              className="confetti"
+              active={points === questions.length && showPoints}
+              config={config}
+            />
+            {showPoints && (
+              <h1 className="score">
+                {points == questions.length && "Congratulations, "}You scored{" "}
+                {points}/{questions.length}
+              </h1>
+            )}
+            {showPoints === true ? (
+              <div className="app--btn-container">
+                <button className="app--btn" onClick={reset}>
+                  Play Again
+                </button>
+                <button className="app--btn" onClick={changeCategory}>
+                  Change Category
+                </button>
+              </div>
+            ) : (
+              <button className="app--btn" onClick={correct}>
+                Check Answers
               </button>
-              <button className="app--btn" onClick={changeCategory}>
-                Change Category
-              </button>
-            </div>
-          ) : (
-            <button className="app--btn" onClick={correct}>
-              Check Answers
-            </button>
-          )}
-          <Footer />
-        </div>
+            )}
+            <Footer />
+          </div>
+        )
       ) : (
         <Form
           handleChange={(event) =>

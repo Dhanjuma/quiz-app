@@ -24,7 +24,9 @@ export const Form = (props) => {
   return (
     <div className="form-container">
       <form onSubmit={props.handleSubmit}>
-        <h2>Please select a category :</h2>
+        <label htmlFor="category">
+          <h2>Please select a category :</h2>
+        </label>
         <select
           id="category"
           value={props.formData.category}
@@ -48,7 +50,9 @@ export const Form = (props) => {
         <br />
         <br />
         <br />
-        <h2>Select Level of Difficulty :</h2>
+        <label htmlFor="levelOfDifficulty">
+          <h2>Select level of difficulty :</h2>
+        </label>
         <select
           id="levelOfDifficulty"
           value={props.formData.levelOfDifficulty}
@@ -64,7 +68,23 @@ export const Form = (props) => {
         <br />
         <br />
         <br />
-        <button>Start Quiz</button>
+        <label htmlFor="noOfQuestions">
+          <h2>Select number of questions :</h2>
+        </label>
+        <input
+          id="noOfQuestions"
+          name="noOfQuestions"
+          type="number"
+          min="5"
+          max="50"
+          value={props.formData.noOfQuestions}
+          onChange={props.handleChange}
+        />
+        <br />
+        <br />
+        <br />
+        <br />
+        <button>Start quiz</button>
       </form>
     </div>
   );

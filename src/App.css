@@ -1,17 +1,13 @@
-@import url('https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Andika:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Gentium+Book+Plus:ital,wght@0,400;0,700;1,400;1,700&family=Karla:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700;1,800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
-
-*{
+* {
   box-sizing: border-box;
   margin: 0;
 }
 
-body{
+body {
   height: 100vh;
 }
-
-
-
 
 .toggler {
   display: flex;
@@ -56,75 +52,89 @@ main.dark .toggler-dark {
   justify-content: flex-end;
 } */
 
-
-
-
-
-main.dark{
-  background: rgb(90,4,91);
-  background: linear-gradient(90deg, rgba(90,4,91,1) 0%, rgba(1,69,70,1) 100%);
+main.dark {
+  background: rgb(90, 4, 91);
+  background: linear-gradient(
+    90deg,
+    rgba(90, 4, 91, 1) 0%,
+    rgba(1, 69, 70, 1) 100%
+  );
   color: #00040c;
 }
-main.dark .app{
-  background: rgb(90,4,91);
-  background: linear-gradient(90deg, rgba(90,4,91,1) 0%, rgba(1,69,70,1) 100%);
+main.dark .app {
+  background: rgb(90, 4, 91);
+  background: linear-gradient(
+    90deg,
+    rgba(90, 4, 91, 1) 0%,
+    rgba(1, 69, 70, 1) 100%
+  );
   color: #00040c;
 }
-main.dark .app--btn{
+main.dark .app--btn {
   background: #a0a3af;
   color: #00040c;
 }
-main.dark .score{
+main.dark .score {
   color: whitesmoke;
 }
-main.dark .intro{
+main.dark .intro {
   color: whitesmoke;
   background-color: #00040c;
 }
-main.dark .intro--btn{
-  background: linear-gradient(90deg, rgba(90,4,91,1) 0%, rgba(1,69,70,1) 100%);
+main.dark .intro--btn {
+  background: linear-gradient(
+    90deg,
+    rgba(90, 4, 91, 1) 0%,
+    rgba(1, 69, 70, 1) 100%
+  );
   color: whitesmoke;
 }
-.questions{
+.questions {
   border-bottom: 1px solid #00040c;
 }
-main.dark .options > button{
-  background: linear-gradient(179.96deg, rgba(252, 252, 253, 0.993) 0.04%, rgba(246, 243, 248, 0) 130.08%);
+main.dark .options > button {
+  background: linear-gradient(
+    179.96deg,
+    rgba(252, 252, 253, 0.993) 0.04%,
+    rgba(246, 243, 248, 0) 130.08%
+  );
   border-color: #00040c;
   color: #00040c;
 }
-main.dark .form-container{
+main.dark .form-container {
   color: whitesmoke;
   background-color: #00040c;
 }
-main.dark form > button{
-  background: linear-gradient(90deg, rgba(90,4,91,1) 0%, rgba(1,69,70,1) 100%);
+main.dark form > button {
+  background: linear-gradient(
+    90deg,
+    rgba(90, 4, 91, 1) 0%,
+    rgba(1, 69, 70, 1) 100%
+  );
   color: whitesmoke;
 }
 
-
-
-main{
-  background-color: #00DBDE;
-  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
-  font-family: 'Fira Sans', sans-serif;
-  color: #FFFFFF;
+main {
+  background-color: #00dbde;
+  background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
+  font-family: "Fira Sans", sans-serif;
+  color: #ffffff;
 }
 
-.app{
-  font-family: 'Fira Sans', sans-serif;
-  color: #FFFFFF;
+.app {
+  font-family: "Fira Sans", sans-serif;
+  color: #ffffff;
   width: 100%;
-  background-color: #00DBDE;
-  background-image: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+  background-color: #00dbde;
+  background-image: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
   display: flex;
   height: 100%;
   flex-direction: column;
   justify-content: center;
 }
 
-.form-container{
-  font-family: 'kira', sans-serif;
+.form-container {
+  font-family: "kira", sans-serif;
   color: #0c0404;
   background-color: #f6f8f8;
   height: 100vh;
@@ -134,24 +144,24 @@ main{
   padding-top: 50px;
 }
 
-form > button{
+form > button {
   border-radius: 15px;
   width: 120px;
   height: 40px;
   background: #162158;
-  color: #F5F7FB;
+  color: #f5f7fb;
   border: none;
   font-size: 16px;
   font-weight: 800;
-  font-family: 'Helvetica', sans-serif;
+  font-family: "Helvetica", sans-serif;
   cursor: pointer;
 }
 
-.confetti{
+.confetti {
   align-self: center;
 }
 
-.app--btn-container{
+.app--btn-container {
   display: flex;
   gap: 30px;
   padding: 20px;
@@ -159,22 +169,20 @@ form > button{
   flex-wrap: wrap;
 }
 
-.app--btn{
-    border-radius: 15px;
-    width: 193px;
-    height: 52px;
-    background: #162158;
-    color: #F5F7FB;
-    border: none;
-    font-size: 16px;
-    font-weight: 800;
-    margin-bottom: 50px;
-    font-family: 'Karla', sans-serif;
-    cursor: pointer;
-    align-self: center;
+.app--btn {
+  border-radius: 15px;
+  width: 193px;
+  height: 52px;
+  background: #162158;
+  color: #f5f7fb;
+  border: none;
+  font-size: 16px;
+  font-weight: 800;
+  margin-bottom: 50px;
+  font-family: "Karla", sans-serif;
+  cursor: pointer;
+  align-self: center;
 }
-
-
 
 .app--btn:focus {
   outline: none;
@@ -184,8 +192,8 @@ form > button{
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
-.intro{
-  color: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+.intro {
+  color: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
   width: 100%;
   height: 100vh;
   display: flex;
@@ -195,24 +203,22 @@ form > button{
   gap: 20px;
 }
 
-.intro > p{
+.intro > p {
   font-weight: 600;
 }
 
-
-.intro--btn{
+.intro--btn {
   border-radius: 15px;
   width: 193px;
   height: 52px;
-  background:linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+  background: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
   border: none;
-  color: linear-gradient(90deg, #00DBDE 0%, #FC00FF 100%);
+  color: linear-gradient(90deg, #00dbde 0%, #fc00ff 100%);
   font-size: 16px;
   font-weight: 900;
-  font-family: 'Karla', sans-serif;
+  font-family: "Karla", sans-serif;
   cursor: pointer;
 }
-
 
 .intro--btn:focus {
   outline: none;
@@ -222,40 +228,43 @@ form > button{
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
-.questions{
+.questions {
   margin: 20px 50px;
   border-bottom: 1px solid white;
   padding-bottom: 10px;
 }
 
-.options{
+.options {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
   margin-top: 10px;
 }
 
-.questions > h3{
-  font-family: 'Poppins', sans-serif;
+.questions > h3 {
+  font-family: "Poppins", sans-serif;
 }
 
-.options > button{
+.options > button {
   border-radius: 10px;
   font-weight: 600;
-  background: linear-gradient(179.96deg, rgba(255, 255, 255, 0.25) 0.04%, rgba(87, 177, 255, 0) 130.08%);
-  border-color: #FFFFFF;
+  background: linear-gradient(
+    179.96deg,
+    rgba(255, 255, 255, 0.25) 0.04%,
+    rgba(87, 177, 255, 0) 130.08%
+  );
+  border-color: #ffffff;
   padding: 5px;
   cursor: pointer;
-  color: #FFFFFF;
+  color: #ffffff;
 }
 
-.score{
+.score {
   align-self: center;
   margin-bottom: 80px;
 }
 
-
-.social{
+.social {
   display: flex;
   gap: 20px;
   /* flex-direction: column; */
@@ -266,13 +275,13 @@ form > button{
   margin-top: 180px;
 }
 
-.social-icon{
+.social-icon {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
 }
 
-a.social{
+a.social {
   margin: 10px 0;
   transition: transform 250ms;
   text-decoration: none;
@@ -282,10 +291,6 @@ a.social{
 a.social:hover {
   opacity: 0.6;
 }
-
-
-
-
 
 /* @media screen and (min-width: 950px) {
 
@@ -303,8 +308,3 @@ a.social:hover {
     height: 100vh;
   }
 } */
-
-
-
-
-
