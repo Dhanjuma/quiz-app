@@ -7,7 +7,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMoon, faSun } from "@fortawesome/free-solid-svg-icons";
 import { Footer } from "./quiz/footer";
 import { Form } from "./quiz/category";
-// import { faMoon, faSun } from "@fortawesome/free-regular-svg-icons";
 
 function App() {
   const [quiz, SetQuiz] = React.useState(false);
@@ -26,7 +25,7 @@ function App() {
   const [formData, setFormData] = React.useState({
     category: "",
     levelOfDifficulty: "",
-    noOfQuestions: 15,
+    noOfQuestions: 10,
   });
 
   function handleChange(name, value) {
@@ -47,14 +46,11 @@ function App() {
   const config = {
     angle: 90,
     spread: 60,
-    // startVelocity: "100",
     elementCount: "200",
-    // dragFriction: "0.01",
     duration: "6000",
     stagger: "10",
     width: "20px",
     height: "20px",
-    // perspective: "1000px",
     colors: ["#a864fd", "#29cdff", "#78ff44", "#ff718d", "#fdff6a"],
   };
 
@@ -78,12 +74,6 @@ function App() {
       })
     );
   };
-
-  // React.useEffect(() => {
-  //   if (!showPoints) {
-  //     // setQuestions();
-  //   }
-  // }, [showPoints]);
 
   const startQuiz = () => {
     SetIntro(false);
@@ -120,41 +110,81 @@ function App() {
     setIsFetching(true);
   };
 
+  // console.log(questions);
+
   React.useEffect(() => {
     const fetchData = async () => {
       const response = await fetch(
         `https://opentdb.com/api.php?amount=${formData.noOfQuestions}&category=${formData.category}&difficulty=${formData.levelOfDifficulty}&type=multiple`
       );
       const all = await response.json();
-      // console.log(all);
-      setIsFetching(false);
-      setQuestions(
-        all.results.map((item, index) => ({
-          question: item.question,
-          question_id: index,
-          options: [item.correct_answer, ...item.incorrect_answers]
-            .map((op, index) => ({
-              value: op,
-              id: index,
-              selected: false,
-            }))
-            .map((value) => ({ value, sort: Math.random() }))
-            .sort((a, b) => a.sort - b.sort)
-            .map(({ value }) => value),
 
-          answer: item.correct_answer,
-          selected_option: "",
-          correct: false,
-          showAnswer: false,
-        }))
+      setIsFetching(false);
+
+      let data = all.results.map((item, index) => ({
+        question: item.question,
+        question_id: index,
+        options: [item.correct_answer, ...item.incorrect_answers]
+          .map((op, index) => ({
+            value: op,
+            id: index,
+            selected: false,
+          }))
+          .map((value) => ({ value, sort: Math.random() }))
+          .sort((a, b) => a.sort - b.sort)
+          .map(({ value }) => value),
+
+        answer: item.correct_answer,
+        selected_option: "",
+        correct: false,
+        showAnswer: false,
+      }));
+
+      let fixed = JSON.parse(
+        JSON.stringify(data)
+          .replaceAll(/&sub;/g, "⊂")
+          .replaceAll(/&sup;/g, "⊃")
+          .replaceAll(/&micro;/g, "µ")
+          .replaceAll(/&atilde;/g, "ã")
+          .replaceAll(/&uacute;/g, "ú")
+          .replaceAll(/&rsquo;/g, "’")
+          .replaceAll(/&quot;/g, "'")
+          .replaceAll(/&deg;/g, "°")
+          .replaceAll(/&hellip;/g, "…")
+          .replaceAll(/&ecirc;/g, "ê")
+          .replaceAll(/&#039;/g, "'")
+          .replaceAll(/&ldquo;/g, "“")
+          .replaceAll(/&rdquo;/g, "”")
+          .replaceAll(/&amp;/g, "&")
+          .replaceAll(/&lt;/g, "<")
+          .replaceAll(/&gt;/g, ">")
+          .replaceAll(/&ouml;/g, "ö")
+          .replaceAll(/&reg;/g, "®")
+          .replaceAll(/&trade;/g, "™")
+          .replaceAll(/&lrm;/g, "")
+          .replaceAll(/&euml;/g, "ë")
+          .replaceAll(/&uuml;/g, "Ü")
+          .replaceAll(/&Uuml;/g, "Ü")
+          .replaceAll(/&iacute;/g, "í")
+          .replaceAll(/&aacute;/g, "á")
+          .replaceAll(/&Aacute;/g, "á")
+          .replaceAll(/&aring;/g, "å")
+          .replaceAll(/&pi;/g, "π")
+          .replaceAll(/&Pi;/g, "π")
+          .replaceAll(/&Sigma;/g, "σ")
+          .replaceAll(/&Omicron;/g, "ο")
+          .replaceAll(/&Nu;/g, "ν")
+          .replaceAll(/&ntilde;/g, "ñ")
+          .replaceAll(/&oacute;/g, "ó")
+          .replaceAll(/&eacute;/g, "é")
+          .replaceAll(/&Eacute;/g, "é")
+          .replaceAll(/&prime;/g, "′")
       );
+      setQuestions(fixed);
     };
     category && fetchData();
-    // return () => {
-    //   console.log("clearing");
-    // };
+    return () => {};
   }, [quiz, formData, category]);
-  // console.log(questions);
 
   const quizzes = questions.map((question, index) => (
     <Quiz
